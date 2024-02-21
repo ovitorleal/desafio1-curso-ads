@@ -1,0 +1,46 @@
+.logo{
+    display: flex;
+    justify-content: center;
+    height: 150px;
+    margin-top: 15px;
+    
+}
+
+
+.caixa-login{
+    width: 320px; /*largura da caixa de login*/
+    margin: auto; /*centralizando automaticamente pela largura. tam obj - tam tel = obj exatamente no meio*/
+    border: 2px  solid #d1e7eb;/*grossura, tipo e cor da borda da caixa*/
+    margin-top: 25px;
+    padding: 20px;
+    justify-content: center;
+}
+#botao-entrar{
+    /* cor de fundo do botao */
+    background-color: rgb(7, 126, 252);
+    /* cor do negrito, tamanho e tipo de fonte */
+    font: #fff bold 16pt Arial;
+    /* cor principal da fonte */
+    color:#fff;
+    /* espaçamento das lentras dentro do botao */
+    letter-spacing: 5px;
+    /* largura do botao */
+    width: 150px;
+    /* altura do botao */
+    height: 30px;
+    /* arredondamento das bordas do botao */
+    border-radius: 10px;
+    /* cor da borda do botao */
+    border-color: #d1e7eb;
+    justify-content: center;
+    
+}
+
+.esqueci-minha-senha{
+    margin-top: 15px;
+
+}
+
+    
+
+

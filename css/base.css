@@ -1,0 +1,7 @@
+/* primeiro: resetar o css */
+*{
+    margin: 0;  /*da borda pra fora, margin*/
+    padding: 0; /*da borda pra fora, padding*/
+    box-sizing: border-box; /* todo elemento tem que respeitar a borda*/
+    }
+    
