@@ -1,17 +1,19 @@
+body{
+    background-color: rgb(191, 192, 194);
+}
 .logo{
     display: flex;
     justify-content: center;
-    height: 150px;
+    height: 100px;
     margin-top: 15px;
     
 }
-
-
 .caixa-login{
+    background-color: #fff;
     width: 320px; /*largura da caixa de login*/
     margin: auto; /*centralizando automaticamente pela largura. tam obj - tam tel = obj exatamente no meio*/
-    border: 2px  solid #d1e7eb;/*grossura, tipo e cor da borda da caixa*/
-    margin-top: 25px;
+    border: 2px  solid #5f8fb4;/*grossura, tipo e cor da borda da caixa*/
+    margin-top: 35px;
     padding: 20px;
     justify-content: center;
 }
@@ -32,13 +34,11 @@
     border-radius: 10px;
     /* cor da borda do botao */
     border-color: #d1e7eb;
-    justify-content: center;
-    
+    justify-content: center;   
 }
-
 .esqueci-minha-senha{
     margin-top: 15px;
-
+    
 }
 
     
