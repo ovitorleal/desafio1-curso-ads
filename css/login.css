@@ -37,7 +37,7 @@ input{
     padding: 8px;
     border: #5f8fb4 1px solid ;
     border-radius: 8px;
-    font-family: "Kode Mono", monospace ;
+    font-family: "Anta", sans-serif;
     
 }
 
@@ -45,7 +45,7 @@ input{
     /* cor de fundo do botao */
     background-color: var(--cor-primaria);
     /* cor do negrito, tamanho e tipo de fonte */
-    font-family: "Kode Mono", monospace ;
+    font-family: "Anta", sans-serif;
     /* cor principal da fonte */
     color:#fff;
     /* espaçamento das lentras dentro do botao */
