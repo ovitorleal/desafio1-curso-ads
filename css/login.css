@@ -5,39 +5,73 @@ body{
     display: flex;
     justify-content: center;
     height: 100px;
-    margin-top: 15px;
-    
+    margin-top: 15px;  
 }
+
 .caixa-login{
     background-color: #fff;
-    width: 320px; /*largura da caixa de login*/
+    width: 250px; /*largura da caixa de login*/
     margin: auto; /*centralizando automaticamente pela largura. tam obj - tam tel = obj exatamente no meio*/
     border: 2px  solid #5f8fb4;/*grossura, tipo e cor da borda da caixa*/
     margin-top: 35px;
     padding: 20px;
     justify-content: center;
+    font-family: "Kode Mono", monospace ;
 }
-#botao-entrar{
+
+.titulo-login{
+    text-align: center;
+    color: var(--cor-primaria);
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-family: "Kode Mono", monospace ;
+}
+
+label{
+    font-size: 16px;
+}
+
+input{
+    width: 100%;
+    padding: 8px;
+    border: #5f8fb4 1px solid ;
+    border-radius: 8px;
+    font-family: "Kode Mono", monospace ;
+    
+}
+
+#botao-entrar {
     /* cor de fundo do botao */
-    background-color: rgb(7, 126, 252);
+    background-color: var(--cor-primaria);
     /* cor do negrito, tamanho e tipo de fonte */
-    font: #fff bold 16pt Arial;
+    font-family: "Kode Mono", monospace ;
     /* cor principal da fonte */
     color:#fff;
     /* espaçamento das lentras dentro do botao */
     letter-spacing: 5px;
     /* largura do botao */
-    width: 150px;
+    width: 100% ;
     /* altura do botao */
     height: 30px;
     /* arredondamento das bordas do botao */
     border-radius: 10px;
     /* cor da borda do botao */
-    border-color: #d1e7eb;
+    border-color: var(--cor-secundaria);
     justify-content: center;   
 }
-.esqueci-minha-senha{
-    margin-top: 15px;
+#botao-entrar:hover{
+    background-color: var(--cor-secundaria);
+    cursor: pointer;
+}
+
+.esqueci-minha-senha  {
+    text-decoration: none;
+    color: var(--cor-primaria);
+    font-size: 14px;
+    font-weight: 550;
+    text-align: right;
+    font-family: "Kode Mono", monospace ;
     
 }
 
