@@ -66,14 +66,13 @@ input{
 }
 
 .esqueci-minha-senha  {
-    text-decoration: none;
     color: var(--cor-primaria);
     font-size: 14px;
     font-weight: 550;
     text-align: right;
-    font-family: "Kode Mono", monospace ;
-    
+    font-family: "Kode Mono", monospace ;   
 }
+
 
     
 
