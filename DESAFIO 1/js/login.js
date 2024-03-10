@@ -21,23 +21,7 @@ btnEntrar.addEventListener("click", () => {
     let emailDigitado = campoEmail.value.toLowerCase();
     let senhaDigitada = campoSenha.value;
 
-    // Validando o email e senha
-    if(!emailDigitado || !senhaDigitada){
-        alert("O campo de e-mail e senha não podem ficar vazios. Por favor preencha todos os campos.");
-        return;
-    }
-
-    if(emailDigitado != EMAIL || senhaDigitada != SENHA){
-        alert('E-mail ou Senha incorretos! Tente novamente');
-        return;
-    }
-
-    //  Acessar o sistema
-    location.href="home.html"
-    window.open('home.html', '_self');
-
     autenticar(emailDigitado, senhaDigitada);
-
 });
 
 
@@ -62,12 +46,26 @@ function autenticar (email, senha){
             return;
         }
 
-        window.open('home.html', '_self');
+        // Mostrar loading
+        mostrarLoading();
+
+        setTimeout(() => {
+            window.open('home.html','_self')
+        }, 5000);
+        
     })
     //4° Se der errado, mandar mensagem para o usuario.
     .catch(erro => {
         console.log(erro)
-    })
+    })    
+}
 
-    
+function mostrarLoading(){
+    // Tenho que capturar o campo de loading e mostrar ele
+    const divLoading = document.getElementById("loading");
+    divLoading.style.display = "block";
+
+    // pegar o emento caixa de login e esconder ela
+    const divBoxLogin = document.querySelector('div.caixa-login');
+    divBoxLogin.style.display = "none";
 }

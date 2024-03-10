@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Anta&display=swap');
 :root{
-    --cor-primaria: #03a9f4;
+    --cor-primaria: #5E90B5;
     --cor-secundaria: #9dc9f5;
 }
+
 
 /* primeiro: resetar o css */
 *{
@@ -10,5 +11,6 @@
     padding: 0; /*da borda pra dentro, padding*/
     box-sizing: border-box; /* todo elemento tem que respeitar a borda*/
     outline: var(--cor-primaria); /*mostrar contorno quando focado*/
+    font-family: "Anta", sans-serif; /*familia da fonte*/
     }
     
