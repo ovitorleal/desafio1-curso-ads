@@ -49,9 +49,13 @@ function autenticar (email, senha){
         // Mostrar loading
         mostrarLoading();
 
+        // Aqui salvo o token e o usuario na storage
+        salvarToken(response.token);
+        salvarUsuario(response.usuario);
+
         setTimeout(() => {
-            window.open('home.html','_self')
-        }, 5000);
+            window.open('controle-produtos.html', '_self');
+        }, 3000);
         
     })
     //4° Se der errado, mandar mensagem para o usuario.
@@ -65,7 +69,7 @@ function mostrarLoading(){
     const divLoading = document.getElementById("loading");
     divLoading.style.display = "block";
 
-    // pegar o emento caixa de login e esconder ela
+    // pegar o emento caixa de login e esconder ela.
     const divBoxLogin = document.querySelector('div.caixa-login');
     divBoxLogin.style.display = "none";
 }
