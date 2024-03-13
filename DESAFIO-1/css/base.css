@@ -13,4 +13,24 @@
     outline: var(--cor-primaria); /*mostrar contorno quando focado*/
     font-family: "Anta", sans-serif; /*familia da fonte*/
     }
-    
+
+
+    footer{
+        width: 100%;
+    }
+#copyright{
+        text-align: center;
+        background-color: var(--cor-secundaria);
+        bottom: 0;
+        position: fixed;
+        width: 100%;
+        font-size: 14px;
+        font-family: monospace;
+        font-weight:  bold;
+        
+}
+#copyright a {
+        font-family: monospace;
+        font-style: italic;
+        
+    }
