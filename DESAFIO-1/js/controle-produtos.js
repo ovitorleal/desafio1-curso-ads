@@ -1,8 +1,25 @@
-const URL = 'http://localhost:3400/produtos/'
+const URL = 'http://localhost:3400/produtos'
 
 let listaDeProdutos = [];
-let btnAdicionar = document.querySelector( '#btn-adicionar' );
+let btnAdicionar = document.querySelector('#btn-adicionar');
 let tabelaProduto = document.querySelector('table>tbody');
+let modalProduto = new bootstrap.Modal(document.getElementById('modal-produto'));
+
+let formModal = {
+    id: document.querySelector("#id"),
+    nome: document.querySelector("#nome"),
+    quantidadeEstoque: document.querySelector("#quantidadeEstoque"),
+    valor: document.querySelector("#valor"),
+    dataCadastro: document.querySelector("#dataCadastro"),
+    btnSalvar:document.querySelector("#btn-salvar"),
+    btnCancelar:document.querySelector("#btn-cancelar")
+}
+
+
+btnAdicionar.addEventListener('click', () =>{
+    limparModalProduto();
+    modalProduto.show();
+});
 
 //obter produtos da API
 function obterProdutos(){
@@ -42,7 +59,6 @@ function criarLinhaNaTabela(produto){
     let tdQuantidadeEstoque = document.createElement('td');
     let tdValor = document.createElement("td");
     let tdDataCadastro = document.createElement("td");
-    let tdObservacao = document.createElement("td");
     let tdAcoes = document.createElement("td");
 
     //atualizar tds com base nos produtos
@@ -50,9 +66,13 @@ function criarLinhaNaTabela(produto){
     tdNome.textContent = produto.nome;
     tdQuantidadeEstoque.textContent = produto.quantidadeEstoque;
     tdValor.textContent = produto.valor;
-    tdObservacao.textContent = produto.observacao;
     tdDataCadastro.textContent = new Date(produto.dataCadastro).toLocaleDateString();
-    //FALTA ADICIONAR AÇÕES!!!
+    tdAcoes.innerHTML = `<button onclick="editarProduto(${produto.id})" class="btn btn-outline-primary btn-sm mr-3">
+                                Editar
+                            </button>
+                            <button onclick="excluirProduto(${produto.id})" class="btn btn-outline-primary btn-sm mr-3">
+                                Excluir
+                        </button>`
     
     //adicionando as td as tr
 
@@ -65,11 +85,91 @@ function criarLinhaNaTabela(produto){
 
     //adicionar tr a tabela
     tabelaProduto.appendChild(tr);
+}
 
+formModal.btnSalvar.addEventListener('click', ()=>{
 
+    //pegar dados da tela modal e virar um produto
+    let produto = obterProdutoDoModal();
 
+    //campos obrigatorios
 
+    if(!produto.validar()){
+        alert("Nome e Quantidade Estoque são OBRIGATÓRIOS!");
+        return;
+    }
 
+    // adicionar na API
+    adicionarProdutoNoBackend(produto);
+});
 
+function obterProdutoDoModal(){
+    return new Produto({
+        id: formModal.id.value,
+        nome : formModal.nome.value,
+        quantidadeEstoque: formModal.quantidadeEstoque.value,
+        valor: formModal.valor.value,
+        dataCadastro: (formModal.dataCadastro.value)
+            ? new Date(formModal.dataCadastro.value).toISOString()
+            : new Date().toISOString()
+    });
+}
+
+function adicionarProdutoNoBackend(produto){
+
+    fetch(URL,{
+        method:'POST',
+        headers:{
+            Authorization: obterToken(),
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(produto)
+    })
+    .then(response=>response.json())
+    .then(response=> {
+        let novoProduto = new Produto(response);
+        listaDeProdutos.push(novoProduto);
+
+        popularTabela(listaDeProdutos);
+
+        //fechar modal
+        modalProduto.hide();
+        alert(`Produto ${produto.nome}, foi cadastrado com sucesso!`)
+    })
+}
+
+function limparModalProduto(){
+    formModal.id.value = '';
+    formModal.nome.value='';
+    formModal.quantidadeEstoque.value='';
+    formModal.valor.value='';
+    formModal.dataCadastro.value='';
+}
+
+function excluirProduto(id){
+    let produto = listaDeProdutos.find(produto => produto.id == id);
+
+    if(confirm("Deseja realmente excluir o produto" + produto.nome)){
+        excluirProdutoNoBackend(id);
+    }
+}
+
+function excluirProdutoNoBackend(id){
+    fetch(`${URL}/${id}`, {
+        method:'DELETE', 
+        headers:{
+            Authorization: obterToken()
+        }
+    })
+    .then(()=> {
+        removerProdutoDaLista(id);
+        popularTabela(listaDeProdutos);
+    })
+}
+
+function removerProdutoDaLista(id){
+    let indice = listaDeProdutos.findIndex(produto => produto.id == id);
+
+    listaDeProdutos.splice(indice,1);
 }
 
