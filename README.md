@@ -1,4 +1,4 @@
-<h1>DESAFIO 1 - FRONTEND DEVELOPER (Curso Análise e Desenvolvimento de Sistemas</h1>
+<h1>DESAFIO 1 - FRONTEND DEVELOPER (Curso Análise e Desenvolvimento de Sistemas)</h1>
 
 <h2>Objetivo:</h2>
 
